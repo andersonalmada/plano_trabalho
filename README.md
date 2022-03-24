@@ -1,19 +1,17 @@
-# plano
+# Sistema de Plano de Trabalho - UFC
 
-## Project setup
+## Descrição
+
+Sistema de apoio aos Planos de Trabalho docente da UFC - Crateús
+
+## Setup do Projeto
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compilar e executar
+
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
