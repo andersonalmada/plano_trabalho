@@ -23,11 +23,13 @@
           <tr>
             <td class="text-white">Username</td>
             <td style="text-align: right">
-              <a href="#" class="btn btn-sm btn-success">Visualizar</a>
-              <a href="#" class="btn btn-sm btn-warning" @click="edit(1)"
+              <a href="" class="btn btn-sm btn-success" @click="view(1)"
+                >Visualizar</a
+              >
+              <a href="" class="btn btn-sm btn-warning" @click="edit(1)"
                 >Editar</a
               >
-              <a href="#" class="btn btn-sm btn-danger"> Excluir </a>
+              <a href="" class="btn btn-sm btn-danger"> Excluir </a>
             </td>
           </tr>
           <tr>
@@ -49,8 +51,10 @@ export default {
   components: { Header, Footer },
   methods: {
     edit: function (idUser) {
-      console.log("ok");
       this.$router.push({ name: "UserEdit", params: { id: idUser } });
+    },
+    view: function (idUser) {
+      this.$router.push({ name: "UserView", params: { id: idUser } });
     },
     add: function () {
       this.$router.push({ name: "UserAdd" });

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer class="footer">
+    <footer>
       <div class="container">
         <p class="text-center text-white">&copy;2022 - UFC</p>
       </div>
@@ -15,7 +15,11 @@ export default {
 </script>
 
 <style>
-.footer {
+html {
+  position: relative;
+  min-height: 100%;
+}
+footer {
   position: absolute;
   bottom: 0;
   width: 100%;
