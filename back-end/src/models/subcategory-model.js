@@ -1,16 +1,13 @@
 module.exports = (sequelize, DataTypes) => {
-  const Product = sequelize.define(
-    "products",
+  const SubCategory = sequelize.define(
+    "subcategories",
     {
       name: {
         type: DataTypes.STRING,
-      },
-      price: {
-        type: DataTypes.REAL,
       },
     },
     { timestamps: false }
   );
 
-  return Product;
+  return SubCategory;
 };

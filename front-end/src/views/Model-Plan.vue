@@ -33,12 +33,14 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import axios from "axios";
 
 export default {
   name: "UserAdd",
   data: function () {
     return {
       inputText: null,
+      baseURI: "http://localhost:3000/categories/all",
     };
   },
   components: { Header, Footer },
@@ -55,7 +57,14 @@ export default {
         });
       });
 
-      console.log(categoriesObj);
+      axios
+        .post(this.baseURI, categoriesObj)
+        .then((result) => {
+          alert("Inserido com sucesso !!");
+        })
+        .catch((error) => {
+          alert("Problema na inserção !!");
+        });
     },
     cancel: function () {
       this.$router.push({ name: "Manager" });

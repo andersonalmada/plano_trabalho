@@ -17,10 +17,10 @@ sequelize.sync({
 
 const db = {};
 
-db.products = require("./product-model")(sequelize, Sequelize);
-db.feedbacks = require("./feedback-model")(sequelize, Sequelize);
+db.category = require("./category-model")(sequelize, Sequelize);
+db.subCategory = require("./subcategory-model")(sequelize, Sequelize);
 
-db.products.hasMany(db.feedbacks);
-db.feedbacks.belongsTo(db.products);
+db.category.hasMany(db.subCategory);
+db.subCategory.belongsTo(db.category);
 
 module.exports = db;
