@@ -17,7 +17,14 @@ exports.save = async (category) => {
 };
 
 exports.findAll = async () => {
-  const result = await Category.findAll();
+  const result = await Category.findAll({
+    include: [
+      {
+        model: SubCategory,
+        attributes: { exclude: ["categoryId"] },
+      },
+    ],
+  });
   return result;
 };
 

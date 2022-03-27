@@ -25,11 +25,6 @@ exports.postAll = async (req, res) => {
       new Category(categories[i].category)
     );
 
-    console.log(
-      "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" +
-        categories[i].subcategories[0]
-    );
-
     for (let j = 0; j < categories[i].subcategories.length; j++) {
       let subcategory = subCategoryService.add(
         category.id,

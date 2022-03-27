@@ -36,7 +36,7 @@ import Footer from "@/components/Footer.vue";
 import axios from "axios";
 
 export default {
-  name: "UserAdd",
+  name: "ModelPlanEdit",
   data: function () {
     return {
       inputText: null,
@@ -67,7 +67,7 @@ export default {
         });
     },
     cancel: function () {
-      this.$router.push({ name: "Manager" });
+      this.$router.push({ name: "ModelPlans" });
     },
   },
 };

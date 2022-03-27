@@ -15,10 +15,14 @@ app.use(express.static("public"));
 // Routes
 const categories = require("./routes/category-route");
 const subcategories = require("./routes/subcategory-route");
+const plans = require("./routes/plan-route");
+const users = require("./routes/user-route");
 const upload = require("./routes/upload-route");
 
 app.use("/categories", categories);
 app.use("/subcategories", subcategories);
+app.use("/plans", plans);
+app.use("/users", users);
 app.use("/upload", upload);
 app.use((req, res, next) => {
   res.status(404).send({

@@ -65,7 +65,7 @@ export default {
       this.$router.push({ name: "Users" });
     },
     model: function () {
-      this.$router.push({ name: "ModelPlan" });
+      this.$router.push({ name: "ModelPlans" });
     },
     plans: function () {
       this.$router.push({ name: "Plans" });

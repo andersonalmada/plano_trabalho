@@ -9,7 +9,10 @@ import Users from "@/views/Users.vue";
 import UserAdd from "@/views/User-Add.vue";
 import UserEdit from "@/views/User-Edit.vue";
 import UserView from "@/views/User-View.vue";
-import ModelPlan from "@/views/Model-Plan.vue";
+import ModelPlans from "@/views/Model-Plans.vue";
+import ModelPlanView from "@/views/Model-Plan-View.vue";
+import ModelPlanEdit from "@/views/Model-Plan-Edit.vue";
+import PlanUser from "@/views/Plan-User.vue";
 import NotFound from "@/views/NotFound.vue";
 
 const routes = [
@@ -46,9 +49,24 @@ const routes = [
     component: UserView,
   },
   {
-    path: "/model",
-    name: "ModelPlan",
-    component: ModelPlan,
+    path: "/models",
+    name: "ModelPlans",
+    component: ModelPlans,
+  },
+  {
+    path: "/model-edit",
+    name: "ModelPlanEdit",
+    component: ModelPlanEdit,
+  },
+  {
+    path: "/model-view",
+    name: "ModelPlanView",
+    component: ModelPlanView,
+  },
+  {
+    path: "/plan-user",
+    name: "PlanUser",
+    component: PlanUser,
   },
   { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
 ];
