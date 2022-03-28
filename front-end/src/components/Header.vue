@@ -3,7 +3,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="#" class="navbar-brand header" @click="index">
+          <a href="" class="navbar-brand header" @click="index">
             <img
               src="@/assets/images/ufc.png"
               alt="Sistema de Plano de Trabalho da UFC"
@@ -21,9 +21,32 @@
 <script>
 export default {
   name: "Header",
+  created: function () {
+    if (localStorage.getItem("user")) {
+      let user = JSON.parse(localStorage.getItem("user"));
+      let route = this.$router.history.current.name;
+
+      if (user.email !== "admin@crateus.ufc.br") {
+        if (
+          route === "Manager" ||
+          route === "ModelPlanEdit" ||
+          route === "ModelPlanView" ||
+          route === "ModelPlans" ||
+          route === "UserAdd" ||
+          route === "UserEdit" ||
+          route === "UserView" ||
+          route === "Users"
+        ) {
+          this.$router.push({ name: "PlanUser" });
+        }
+      }
+    } else {
+      this.$router.push({ name: "Login" });
+    }
+  },
   methods: {
     index: function () {
-      this.$router.push("/");
+      this.$router.push({ name: "Login" });
     },
   },
 };

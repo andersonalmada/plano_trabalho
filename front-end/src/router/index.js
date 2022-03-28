@@ -13,6 +13,8 @@ import ModelPlans from "@/views/Model-Plans.vue";
 import ModelPlanView from "@/views/Model-Plan-View.vue";
 import ModelPlanEdit from "@/views/Model-Plan-Edit.vue";
 import PlanUser from "@/views/Plan-User.vue";
+import PlanUserEdit from "@/views/Plan-User-Edit.vue";
+import PlanUserView from "@/views/Plan-User-View.vue";
 import NotFound from "@/views/NotFound.vue";
 
 const routes = [
@@ -67,6 +69,16 @@ const routes = [
     path: "/plan-user",
     name: "PlanUser",
     component: PlanUser,
+  },
+  {
+    path: "/plan-user-edit",
+    name: "PlanUserEdit",
+    component: PlanUserEdit,
+  },
+  {
+    path: "/plan-user-view",
+    name: "PlanUserView",
+    component: PlanUserView,
   },
   { path: "/:pathMatch(.*)*", name: "not-found", component: NotFound },
 ];

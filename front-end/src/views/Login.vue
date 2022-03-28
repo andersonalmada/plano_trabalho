@@ -21,10 +21,6 @@
         value="Login"
         @click="logar"
       />
-
-      <div class="login-help">
-        Esqueceu sua senha? Clique <a href="#">aqui</a>.
-      </div>
     </div>
   </div>
 </template>
@@ -41,6 +37,17 @@ export default {
       baseLogin: "http://localhost:3000/users/login",
     };
   },
+  created: function () {
+    if (localStorage.getItem("user")) {
+      let user = JSON.parse(localStorage.getItem("user"));
+
+      if (user.email === "admin@crateus.ufc.br") {
+        this.$router.push({ name: "Manager" });
+      } else {
+        this.$router.push({ name: "PlanUser" });
+      }
+    }
+  },
   methods: {
     logar: function () {
       axios
@@ -50,7 +57,11 @@ export default {
         })
         .then((result) => {
           localStorage.setItem("user", JSON.stringify(result.data));
-          this.$router.go();
+          if (result.data.email === "admin@crateus.ufc.br") {
+            this.$router.push({ name: "Manager" });
+          } else {
+            this.$router.push({ name: "PlanUser" });
+          }
         });
     },
   },

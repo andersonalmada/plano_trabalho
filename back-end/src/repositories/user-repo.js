@@ -17,13 +17,33 @@ exports.save = async (user) => {
 };
 
 exports.findAll = async () => {
-  return await user.findAll();
+  return await User.findAll();
 };
 
 exports.findOne = async (id) => {
-  const result = await user.findOne({
+  const result = await User.findOne({
     where: {
       id: id,
+    },
+  });
+  return result;
+};
+
+exports.login = async (email, password) => {
+  const result = await User.findOne({
+    where: {
+      email: email,
+      password: password,
+    },
+  });
+  return result;
+};
+
+exports.logout = async (email, password) => {
+  const result = await User.findOne({
+    where: {
+      email: email,
+      password: password,
     },
   });
   return result;

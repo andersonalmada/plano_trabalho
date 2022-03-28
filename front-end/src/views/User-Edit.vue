@@ -19,8 +19,10 @@
 
           <div id="actions" class="row">
             <div class="col-md-12">
-              <button type="submit" class="btn btn-primary">Salvar</button>
-              <a href="" class="btn btn-danger" @click="cancel">Cancelar</a>
+              <button type="button" class="btn btn-primary">Salvar</button>
+              <button type="button" class="btn btn-danger" @click="cancel">
+                Cancelar
+              </button>
             </div>
           </div>
         </form>

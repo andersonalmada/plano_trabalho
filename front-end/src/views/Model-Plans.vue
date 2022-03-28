@@ -5,12 +5,12 @@
       <h2 class="text-center">Modelo de Plano</h2>
 
       <div>
-        <a class="btn btn-success" href="" @click="edit"
-          ><i class="fa fa-plus"></i>Editar</a
-        >
-        <a class="btn btn-warning" href="" @click="view"
-          ><i class="fa fa-plus"></i>Visualizar</a
-        >
+        <button type="button" class="btn btn-success" @click="edit">
+          <i class="fa fa-plus"></i>Editar
+        </button>
+        <button type="button" class="btn btn-warning" @click="view">
+          <i class="fa fa-plus"></i>Visualizar
+        </button>
       </div>
     </div>
     <Footer></Footer>

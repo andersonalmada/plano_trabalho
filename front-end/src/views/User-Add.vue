@@ -41,7 +41,9 @@
               <button type="button" class="btn btn-primary" @click="add">
                 Salvar
               </button>
-              <a href="" class="btn btn-danger" @click="cancel">Cancelar</a>
+              <button type="button" class="btn btn-danger" @click="cancel">
+                Cancelar
+              </button>
             </div>
           </div>
         </form>

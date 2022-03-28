@@ -10,6 +10,14 @@ exports.getById = async (req, res) => {
   res.json(await userService.getById(req.params.id));
 };
 
+exports.login = async (req, res) => {
+  res.json(await userService.login(req.body.email, req.body.password));
+};
+
+exports.logout = async (req, res) => {
+  res.json(await userService.logout(req.body.email, req.body.password));
+};
+
 exports.post = async (req, res) => {
   res.json(
     await userService.add(
