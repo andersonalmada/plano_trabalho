@@ -12,6 +12,10 @@ class PlanService {
   getById(id) {
     return planRepo.findOne(id);
   }
+
+  getByUser(id) {
+    return planRepo.findByUser(id);
+  }
 }
 
 module.exports = PlanService;

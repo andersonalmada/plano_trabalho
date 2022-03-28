@@ -35,7 +35,7 @@
             <button type="button" class="btn btn-primary" @click="edit">
               Editar
             </button>
-            <button type="button" class="btn btn-danger" @click="cancel">
+            <button type="button" class="btn btn-warning" @click="cancel">
               Cancelar
             </button>
           </div>

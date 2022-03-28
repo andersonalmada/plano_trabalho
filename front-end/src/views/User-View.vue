@@ -15,7 +15,7 @@
         <div class="col-md-12">
           <a href="" class="btn btn-primary" @click="edit(1)">Editar</a>
           <a href="" class="btn btn-danger" @click="deleteUser(1)">Excluir</a>
-          <a href="" class="btn btn-warning" @click="cancel">Voltar</a>
+          <a href="" class="btn btn-warning" @click="cancel">Cancelar</a>
         </div>
       </div>
     </div>

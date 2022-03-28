@@ -2,20 +2,18 @@
   <div id="users-add">
     <Header></Header>
     <div class="container">
-      <h2 class="text-center">Modelo do Plano</h2>
+      <h2 class="text-center">Plano de Trabalho</h2>
 
       <hr />
       <form method="post">
         <div role="tablist">
           <b-card v-for="(item, index) in categories" :key="index">
-            <b-button
-              v-b-toggle="'accordion-' + index"
-              variant="outline-secondary"
+            <b-button v-b-toggle.accordion-1 variant="outline-secondary"
               ><h4>{{ index + 1 }}. {{ item.name }}</h4></b-button
             >
             <b-collapse
               class="text-black"
-              :id="'accordion-' + index"
+              id="accordion-1"
               visible
               accordion="my-accordion"
             >
@@ -28,22 +26,27 @@
                 <span
                   >{{ index + 1 }}. {{ indexSub + 1 }}. {{ itemSub.name }}</span
                 >
-                <input
+                <span
+                  v-for="(itemPlan, indexPlan) in plan"
                   type="text"
-                  class="form-control"
                   name=""
-                  @change="updatePlan(itemSub.id, $event)"
-                />
+                  v-bind:key="indexPlan * 10"
+                >
+                  <span v-if="itemPlan.subcategoryId == itemSub.id">{{
+                    itemPlan.value
+                  }}</span>
+                </span>
               </div>
             </b-collapse>
           </b-card>
         </div>
+        <br />
         <div id="actions" class="row">
           <div class="col-md-12">
             <button type="button" class="btn btn-primary" @click="add">
               Salvar
             </button>
-            <button type="button" class="btn btn-danger" @click="cancel">
+            <button type="button" class="btn btn-warning" @click="cancel">
               Cancelar
             </button>
           </div>
@@ -68,7 +71,7 @@ export default {
   data: function () {
     return {
       user: 1,
-      plan: [],
+      plan: null,
       categories: null,
       baseURICategories: "http://localhost:3000/categories",
       baseURI: "http://localhost:3000/plans",
@@ -79,11 +82,23 @@ export default {
       .get(this.baseURICategories)
       .then((result) => {
         this.categories = result.data;
-        console.log(this.categories);
       })
       .catch((error) => {
         alert("Problema na recuperação de dados !!");
       });
+
+    if (localStorage.getItem("user")) {
+      let user = JSON.parse(localStorage.getItem("user"));
+
+      axios
+        .get(this.baseURI + "/user/" + user.id)
+        .then((result) => {
+          this.plan = result.data;
+        })
+        .catch((error) => {
+          alert("Problema na recuperação de dados !!");
+        });
+    }
   },
   methods: {
     updatePlan: function (itemSub, e) {
@@ -106,7 +121,7 @@ export default {
         });
     },
     cancel: function () {
-      this.$router.push({ name: "ModelPlans" });
+      this.$router.push({ name: "PlanUser" });
     },
   },
 };

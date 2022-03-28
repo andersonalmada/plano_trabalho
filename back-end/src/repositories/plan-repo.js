@@ -80,3 +80,12 @@ exports.findOne = async (id) => {
   });
   return result;
 };
+
+exports.findByUser = async (id) => {
+  const result = await Plan.findAll({
+    where: {
+      userId: id,
+    },
+  });
+  return result;
+};

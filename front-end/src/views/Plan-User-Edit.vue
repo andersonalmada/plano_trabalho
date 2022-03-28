@@ -43,7 +43,7 @@
             <button type="button" class="btn btn-primary" @click="add">
               Salvar
             </button>
-            <button type="button" class="btn btn-danger" @click="cancel">
+            <button type="button" class="btn btn-warning" @click="cancel">
               Cancelar
             </button>
           </div>
@@ -88,7 +88,6 @@ export default {
   methods: {
     updatePlan: function (itemSub, e) {
       this.plan[itemSub] = { id: itemSub, subcategory: e.target.value };
-      console.log(this.plan);
     },
     add: function () {
       axios
@@ -106,7 +105,7 @@ export default {
         });
     },
     cancel: function () {
-      this.$router.push({ name: "ModelPlans" });
+      this.$router.push({ name: "PlanUser" });
     },
   },
 };

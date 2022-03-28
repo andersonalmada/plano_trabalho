@@ -20,7 +20,7 @@
           <div id="actions" class="row">
             <div class="col-md-12">
               <button type="button" class="btn btn-primary">Salvar</button>
-              <button type="button" class="btn btn-danger" @click="cancel">
+              <button type="button" class="btn btn-warning" @click="cancel">
                 Cancelar
               </button>
             </div>

@@ -10,6 +10,10 @@ exports.getById = async (req, res) => {
   res.json(await planService.getById(req.params.id));
 };
 
+exports.getByUser = async (req, res) => {
+  res.json(await planService.getByUser(req.params.id));
+};
+
 exports.post = async (req, res) => {
   let plan = req.body.plan;
 
