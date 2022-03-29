@@ -2,14 +2,7 @@
   <div id="users">
     <Header></Header>
     <div class="container">
-      <h2 class="text-center">Usuários</h2>
-
-      <div class="text-end">
-        <a class="btn btn-primary" href="#" @click="add"
-          ><i class="fa fa-plus"></i> Novo Usuário</a
-        >
-      </div>
-
+      <h2 class="text-center">Planos de Trabalho</h2>
       <hr />
 
       <table class="table table-hover">
@@ -20,7 +13,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, index) in users" :key="index">
+          <tr v-for="(item, index) in plans" :key="index">
             <td class="text-white">{{ item.name }}</td>
             <td style="text-align: right">
               <button
@@ -46,7 +39,7 @@
               </button>
             </td>
           </tr>
-          <tr v-if="users == null">
+          <tr v-if="plans == null">
             <td colspan="6" class="text-white">Nenhum registro encontrado.</td>
           </tr>
         </tbody>
@@ -62,11 +55,11 @@ import Footer from "@/components/Footer.vue";
 import axios from "axios";
 
 export default {
-  name: "Users",
+  name: "Plans",
   data: function () {
     return {
-      users: {},
-      baseURI: "http://localhost:3000/users",
+      plans: {},
+      baseURI: "http://localhost:3000/plans",
     };
   },
   components: { Header, Footer },
@@ -74,7 +67,7 @@ export default {
     axios
       .get(this.baseURI)
       .then((result) => {
-        this.users = result.data;
+        this.plans = result.data;
       })
       .catch((error) => {
         alert("Problema na recuperação de dados !!");

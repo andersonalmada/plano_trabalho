@@ -3,7 +3,7 @@
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="" class="navbar-brand header" @click="index">
+          <a class="navbar-brand header btn btn-link" @click="index">
             <img
               src="@/assets/images/ufc.png"
               alt="Sistema de Plano de Trabalho da UFC"

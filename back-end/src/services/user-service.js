@@ -5,6 +5,14 @@ class UserService {
     return userRepo.save(user);
   }
 
+  update(id, user) {
+    return userRepo.update(id, user);
+  }
+
+  delete(id) {
+    return userRepo.delete(id);
+  }
+
   getAll() {
     return userRepo.findAll();
   }

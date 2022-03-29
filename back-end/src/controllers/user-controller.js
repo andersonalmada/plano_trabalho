@@ -25,3 +25,16 @@ exports.post = async (req, res) => {
     )
   );
 };
+
+exports.put = async (req, res) => {
+  res.json(
+    await userService.update(
+      req.body.user.id,
+      new User(req.body.user.name, req.body.user.email, req.body.user.password)
+    )
+  );
+};
+
+exports.delete = async (req, res) => {
+  res.json(await userService.delete(req.params.id));
+};

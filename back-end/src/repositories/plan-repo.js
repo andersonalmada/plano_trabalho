@@ -30,42 +30,6 @@ exports.save = async (userId, plan) => {
     }
   });
   return result;
-  /*
-  return await Plan.findOne({
-    where: {
-      id: 23,
-    },
-  }).then(function (obj) {
-    // update
-    if (obj) {
-      return Plan.update({
-        subcategoryId: plan.id,
-        value: plan.value,
-      })
-        .then((result) => {
-          console.log("Update plan: " + JSON.stringify(result));
-          return result;
-        })
-        .catch((err) => {
-          console.log("Error: ", err);
-        });
-    } else {
-      // insert
-      return Plan.create({
-        userId: userId,
-        subcategoryId: plan.id,
-        value: plan.value,
-      })
-        .then((result) => {
-          console.log("Created plan: " + JSON.stringify(result));
-          return result;
-        })
-        .catch((err) => {
-          console.log("Error: ", err);
-        });
-    }
-  });
-  */
 };
 
 exports.findAll = async () => {

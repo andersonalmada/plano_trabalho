@@ -7,7 +7,7 @@
 
       <div class="row">
         <div class="col-sm">
-          <a href="" class="btn btn-default" @click="users">
+          <button type="button" class="btn btn-default" @click="users">
             <img
               src="@/assets/images/user.png"
               alt="Usuários"
@@ -17,11 +17,11 @@
             <div class="col-xs-12 text-center text-white">
               <p>Usuários</p>
             </div>
-          </a>
+          </button>
         </div>
 
         <div class="col-sm">
-          <a href="" class="btn btn-default" @click="model">
+          <button type="button" class="btn btn-default" @click="model">
             <img
               src="@/assets/images/relatorio.png"
               alt="Modelo do Plano"
@@ -31,11 +31,11 @@
             <div class="col-xs-12 text-center text-white">
               <p>Modelo do Plano</p>
             </div>
-          </a>
+          </button>
         </div>
 
         <div class="col-sm">
-          <a href="places.php" class="btn btn-default">
+          <button type="button" class="btn btn-default" @click="plans">
             <img
               src="@/assets/images/banco.png"
               alt="Planos de Trabalho"
@@ -45,7 +45,7 @@
             <div class="col-xs-12 text-center text-white">
               <p>Planos de Trabalho</p>
             </div>
-          </a>
+          </button>
         </div>
       </div>
     </div>

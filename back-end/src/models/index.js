@@ -24,7 +24,7 @@ db.user = require("./user-model")(sequelize, Sequelize);
 
 db.category.hasMany(db.subCategory);
 db.subCategory.belongsTo(db.category);
-db.user.hasOne(db.plan);
+db.user.hasOne(db.plan, { onDelete: "cascade", hooks: true });
 db.plan.belongsTo(db.user);
 db.subCategory.hasMany(db.plan);
 db.plan.belongsTo(db.subCategory);

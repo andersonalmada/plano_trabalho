@@ -13,9 +13,19 @@
 
       <div id="actions" class="row">
         <div class="col-md-12">
-          <a href="" class="btn btn-primary" @click="edit(1)">Editar</a>
-          <a href="" class="btn btn-danger" @click="deleteUser(1)">Excluir</a>
-          <a href="" class="btn btn-warning" @click="cancel">Cancelar</a>
+          <button type="button" class="btn btn-primary" @click="edit(user.id)">
+            Editar
+          </button>
+          <button
+            type="button"
+            class="btn btn-danger"
+            @click="deleteUser(user.id)"
+          >
+            Excluir
+          </button>
+          <button type="button" class="btn btn-warning" @click="cancel">
+            Cancelar
+          </button>
         </div>
       </div>
     </div>
@@ -26,6 +36,7 @@
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import axios from "axios";
 
 export default {
   name: "UserView",
@@ -34,19 +45,33 @@ export default {
   data: function () {
     return {
       user: {},
+      baseURI: "http://localhost:3000/users",
     };
   },
   created: function () {
-    this.user.id = this.id;
-    this.user.name = "almada";
-    this.user.email = "anderson@ufc";
+    axios
+      .get(this.baseURI + "/" + this.id)
+      .then((result) => {
+        this.user = result.data;
+      })
+      .catch((error) => {
+        alert("Problema na recuperação de dados !!");
+      });
   },
   methods: {
     edit: function (idUser) {
       this.$router.push({ name: "UserEdit", params: { id: idUser } });
     },
     deleteUser: function (idUser) {
-      console.log(idUser);
+      axios
+        .delete(this.baseURI + "/" + idUser)
+        .then((result) => {
+          alert("Deletado com sucesso !! ");
+          this.$router.push({ name: "Users" });
+        })
+        .catch((error) => {
+          alert("Problema na recuperação de dados !!");
+        });
     },
     cancel: function () {
       this.$router.push({ name: "Users" });
