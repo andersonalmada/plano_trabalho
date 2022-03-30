@@ -5,6 +5,10 @@ class PlanService {
     return planRepo.save(subId, value);
   }
 
+  getUsers() {
+    return planRepo.getUsers();
+  }
+
   getAll() {
     return planRepo.findAll();
   }

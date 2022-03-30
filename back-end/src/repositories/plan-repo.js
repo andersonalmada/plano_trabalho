@@ -1,5 +1,6 @@
 const db = require("../models");
 const Plan = db.plan;
+const User = db.user;
 
 exports.save = async (userId, plan) => {
   const result = await Plan.findOne({
@@ -34,6 +35,23 @@ exports.save = async (userId, plan) => {
 
 exports.findAll = async () => {
   return await Plan.findAll();
+};
+
+exports.getUsers = async () => {
+  var result = null;
+
+  try {
+    return await db.sequelize.query(
+      "SELECT DISTINCT ON (a.id) a.id, name FROM users a INNER JOIN plans b ON a.id = b.user_id",
+      {
+        model: User,
+        mapToModel: true,
+      }
+    );
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
 exports.findOne = async (id) => {

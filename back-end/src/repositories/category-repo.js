@@ -1,7 +1,6 @@
 const db = require("../models");
 const Category = db.category;
 const SubCategory = db.subCategory;
-const { Op } = require("sequelize");
 
 exports.save = async (category) => {
   return await Category.create({

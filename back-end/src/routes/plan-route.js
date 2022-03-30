@@ -3,6 +3,7 @@ const router = express.Router();
 
 const controller = require("../controllers/plan-controller");
 
+router.get("/users", controller.getUsers);
 router.get("/", controller.get);
 router.get("/user/:id", controller.getByUser);
 router.get("/:id", controller.getById);

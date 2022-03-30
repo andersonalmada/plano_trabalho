@@ -29,4 +29,7 @@ db.plan.belongsTo(db.user);
 db.subCategory.hasMany(db.plan);
 db.plan.belongsTo(db.subCategory);
 
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
 module.exports = db;

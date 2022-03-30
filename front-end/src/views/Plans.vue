@@ -59,7 +59,7 @@ export default {
   data: function () {
     return {
       plans: {},
-      baseURI: "http://localhost:3000/plans",
+      baseURI: "http://localhost:3000/plans/users",
     };
   },
   components: { Header, Footer },
@@ -83,17 +83,7 @@ export default {
     add: function () {
       this.$router.push({ name: "UserAdd" });
     },
-    deleteUser: function (idUser) {
-      axios
-        .delete(this.baseURI + "/" + idUser)
-        .then((result) => {
-          alert("Deletado com sucesso !! ");
-          this.users = this.users.filter((e) => e.id != idUser);
-        })
-        .catch((error) => {
-          alert("Problema na recuperação de dados !!");
-        });
-    },
+    deleteUser: function (idUser) {},
   },
 };
 </script>

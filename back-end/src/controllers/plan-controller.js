@@ -6,6 +6,10 @@ exports.get = async (req, res) => {
   res.json(await planService.getAll());
 };
 
+exports.getUsers = async (req, res) => {
+  res.json(await planService.getUsers());
+};
+
 exports.getById = async (req, res) => {
   res.json(await planService.getById(req.params.id));
 };
