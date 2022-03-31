@@ -30,3 +30,7 @@ exports.post = async (req, res) => {
 
   res.json("Created");
 };
+
+exports.delete = async (req, res) => {
+  res.json(await planService.delete(req.params.id));
+};

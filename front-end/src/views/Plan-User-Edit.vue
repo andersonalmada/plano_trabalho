@@ -67,7 +67,7 @@ export default {
   components: { Header, Footer },
   data: function () {
     return {
-      user: 1,
+      user: null,
       plan: [],
       categories: null,
       baseURICategories: "http://localhost:3000/categories",
@@ -79,7 +79,11 @@ export default {
       .get(this.baseURICategories)
       .then((result) => {
         this.categories = result.data;
-        console.log(this.categories);
+
+        if (localStorage.getItem("user")) {
+          let user = JSON.parse(localStorage.getItem("user"));
+          this.user = user.id;
+        }
       })
       .catch((error) => {
         alert("Problema na recuperação de dados !!");

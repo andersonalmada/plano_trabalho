@@ -33,7 +33,7 @@
               <button
                 type="button"
                 class="btn btn-sm btn-danger"
-                @click="deleteUser(item.id)"
+                @click="deletePlan(item.id)"
               >
                 Excluir
               </button>
@@ -59,13 +59,13 @@ export default {
   data: function () {
     return {
       plans: {},
-      baseURI: "http://localhost:3000/plans/users",
+      baseURI: "http://localhost:3000/plans",
     };
   },
   components: { Header, Footer },
   created: function () {
     axios
-      .get(this.baseURI)
+      .get(this.baseURI + "/users")
       .then((result) => {
         this.plans = result.data;
       })
@@ -75,15 +75,22 @@ export default {
   },
   methods: {
     edit: function (idUser) {
-      this.$router.push({ name: "UserEdit", params: { id: idUser } });
+      this.$router.push({ name: "PlanAdmEdit", params: { id: idUser } });
     },
     view: function (idUser) {
-      this.$router.push({ name: "UserView", params: { id: idUser } });
+      this.$router.push({ name: "PlanAdmView", params: { id: idUser } });
     },
-    add: function () {
-      this.$router.push({ name: "UserAdd" });
+    deletePlan: function (idUser) {
+      axios
+        .delete(this.baseURI + "/user/" + idUser)
+        .then((result) => {
+          alert("Deletado com sucesso !! ");
+          this.plans = this.plans.filter((e) => e.id != idUser);
+        })
+        .catch((error) => {
+          alert("Problema na recuperação de dados !!");
+        });
     },
-    deleteUser: function (idUser) {},
   },
 };
 </script>

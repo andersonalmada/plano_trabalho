@@ -32,6 +32,9 @@ export default {
           route === "ModelPlanEdit" ||
           route === "ModelPlanView" ||
           route === "ModelPlans" ||
+          route === "Plans" ||
+          route === "PlanAdmEdit" ||
+          route === "PlanAdmView" ||
           route === "UserAdd" ||
           route === "UserEdit" ||
           route === "UserView" ||

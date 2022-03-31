@@ -9,6 +9,10 @@ class PlanService {
     return planRepo.getUsers();
   }
 
+  delete(id) {
+    return planRepo.delete(id);
+  }
+
   getAll() {
     return planRepo.findAll();
   }

@@ -66,11 +66,11 @@ import Footer from "@/components/Footer.vue";
 import axios from "axios";
 
 export default {
-  name: "PlanUserView",
+  name: "PlanAdmView",
   components: { Header, Footer },
+  props: ["id"],
   data: function () {
     return {
-      user: null,
       plan: null,
       categories: null,
       baseURICategories: "http://localhost:3000/categories",
@@ -83,30 +83,29 @@ export default {
       .then((result) => {
         this.categories = result.data;
 
-        if (localStorage.getItem("user")) {
-          let user = JSON.parse(localStorage.getItem("user"));
-          this.user = user.id;
-
-          axios
-            .get(this.baseURI + "/user/" + user.id)
-            .then((result) => {
-              this.plan = result.data;
-            })
-            .catch((error) => {
-              alert("Problema na recuperação de dados !!");
-            });
-        }
+        axios
+          .get(this.baseURI + "/user/" + this.id)
+          .then((result) => {
+            this.plan = result.data;
+          })
+          .catch((error) => {
+            alert("Problema na recuperação de dados !!");
+          });
       })
       .catch((error) => {
         alert("Problema na recuperação de dados !!");
       });
   },
   methods: {
+    updatePlan: function (itemSub, e) {
+      this.plan[itemSub] = { id: itemSub, subcategory: e.target.value };
+      console.log(this.plan);
+    },
     edit: function () {
-      this.$router.push({ name: "PlanUserEdit" });
+      this.$router.push({ name: "PlanAdmEdit", params: { id: this.id } });
     },
     cancel: function () {
-      this.$router.push({ name: "PlanUser" });
+      this.$router.push({ name: "Plans" });
     },
   },
 };

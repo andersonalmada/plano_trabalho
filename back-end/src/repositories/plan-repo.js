@@ -66,7 +66,16 @@ exports.findOne = async (id) => {
 exports.findByUser = async (id) => {
   const result = await Plan.findAll({
     where: {
-      userId: id,
+      user_id: id,
+    },
+  });
+  return result;
+};
+
+exports.delete = async (id) => {
+  const result = await Plan.destroy({
+    where: {
+      user_id: id,
     },
   });
   return result;
