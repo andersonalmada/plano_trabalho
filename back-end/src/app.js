@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv/config");
+const jwt = require("jsonwebtoken");
 const app = express();
 const port = 3000;
 
@@ -19,9 +20,22 @@ const plans = require("./routes/plan-route");
 const users = require("./routes/user-route");
 const upload = require("./routes/upload-route");
 
-app.use("/categories", categories);
-app.use("/subcategories", subcategories);
-app.use("/plans", plans);
+function verifyJWT(req, res, next) {
+  const token = req.headers["x-access-token"];
+  if (!token) return res.status(401).json({ message: "No token provided." });
+
+  jwt.verify(token, process.env.SECRET, function (err, decoded) {
+    if (err)
+      return res.status(500).json({ message: "Failed to authenticate token." });
+
+    req.userId = decoded.id;
+    next();
+  });
+}
+
+app.use("/categories", verifyJWT, categories);
+app.use("/subcategories", verifyJWT, subcategories);
+app.use("/plans", verifyJWT, plans);
 app.use("/users", users);
 app.use("/upload", upload);
 app.use((req, res, next) => {

@@ -61,13 +61,18 @@ exports.delete = async (id) => {
 };
 
 exports.login = async (email, password) => {
-  const result = await User.findOne({
-    where: {
-      email: email,
-      password: password,
-    },
-  });
-  return result;
+  try {
+    const result = await User.findOne({
+      where: {
+        email: email,
+        password: password,
+      },
+    });
+    return result;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
 };
 
 exports.logout = async (email, password) => {

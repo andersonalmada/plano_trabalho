@@ -1,3 +1,4 @@
+require("dotenv/config");
 const Plan = require("../domain/plan");
 const PlanService = require("../services/plan-service");
 var planService = new PlanService();
@@ -32,5 +33,9 @@ exports.post = async (req, res) => {
 };
 
 exports.delete = async (req, res) => {
-  res.json(await planService.delete(req.params.id));
+  if (req.userId == process.env.ADMIN || req.userId == req.params.id) {
+    res.json(await planService.delete(req.params.id));
+  } else {
+    res.status(403).send();
+  }
 };

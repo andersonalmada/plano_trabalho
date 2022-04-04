@@ -1,3 +1,5 @@
+require("dotenv/config");
+const jwt = require("jsonwebtoken");
 const User = require("../domain/user");
 const UserService = require("../services/user-service");
 var userService = new UserService();
@@ -11,11 +13,21 @@ exports.getById = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
-  res.json(await userService.login(req.body.email, req.body.password));
+  const login = await userService.login(req.body.email, req.body.password);
+
+  if (login) {
+    let id = login.id;
+    const token = jwt.sign({ id }, process.env.SECRET, {
+      expiresIn: 3600,
+    });
+    return res.json({ token: token });
+  }
+
+  res.status(403).send();
 };
 
 exports.logout = async (req, res) => {
-  res.json(await userService.logout(req.body.email, req.body.password));
+  res.json({ token: null });
 };
 
 exports.post = async (req, res) => {
